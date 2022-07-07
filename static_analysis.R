@@ -59,4 +59,9 @@ noteworthy <- rows %>% filter(k_value %in% top$k_value)
 
 #####
 
+#Outputting raw data from 10k observations
+write_csv(rows,'./output_files/full_data.csv')
+write_csv(top,'./output_files/top_trends.csv')
+write_csv(noteworthy,'./output_files/combinations_top_trends.csv')
+
 
