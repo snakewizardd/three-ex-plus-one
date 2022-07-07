@@ -5,14 +5,15 @@ source('./three-ex-function.R')
 #2. The matrix to store the results of our operations
 
 #Starting with arbitrary x = 100, y= 100 parameters
+#Can be adjusted******
 xmin=-2
 xmax=2
-nx=100
+nx=1000
 x <- seq(xmin, xmax, length.out=nx)
 
 ymin=-1.5
 ymax=1.5
-ny=100
+ny=900
 y <- seq(ymin, ymax, length.out=ny)
 
 
