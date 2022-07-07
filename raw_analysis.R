@@ -1,3 +1,5 @@
+source('./three-ex-function.R')
+
 #####
 
 repeat_raw_data <- function(){
@@ -59,10 +61,10 @@ for(i in 1:10){
   
 }
 
-write_csv(output,'massive_output_100k_observations.csv')
+write_csv(output,'./output_files/massive_output_100k_observations.csv')
 
 trends_100k <- output %>% group_by(k_value) %>% 
   count() %>% arrange(-n)
 
-write_csv(output,'trends_100k.csv')
+write_csv(output,'./output_files/trends_100k.csv')
 

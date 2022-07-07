@@ -1,4 +1,6 @@
-#Turning above operations into function format
+source('./three-ex-function.R')
+
+
 repeat_this <- function(){
   #Constructing two matrices
   #1. the matrix to contain all the random values to try
@@ -71,4 +73,4 @@ preliminary <- capture_tops %>% group_by(k_value) %>%
   summarize(n = sum(n)) %>% 
   arrange(-n)
 
-write_csv(preliminary,'most_common_results_920k_observations.csv')
+write_csv(preliminary,'./output_files/most_common_results_920k_observations.csv')
