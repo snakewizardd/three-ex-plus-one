@@ -4,7 +4,7 @@ source('./three-ex-function.R')
 #1. the matrix to contain all the random values to try
 #2. The matrix to store the results of our operations
 
-#Starting with arbitrary x = 100, y= 100 parameters
+#Starting with arbitrary x = 1000, y= 900 parameters
 #Can be adjusted******
 xmin=-2
 xmax=2
@@ -60,9 +60,11 @@ noteworthy <- rows %>% filter(k_value %in% top$k_value)
 
 #####
 
-#Outputting raw data from 10k observations
+#Outputting raw data from 900k observations
+
+#Needed to exit loop after 434,096
 write_csv(rows,'./output_files/full_data.csv')
 write_csv(top,'./output_files/top_trends.csv')
-write_csv(noteworthy,'./output_files/combinations_top_trends.csv')
+write_csv(noteworthy %>% arrange(k_value),'./output_files/combinations_top_trends.csv') 
 
 
