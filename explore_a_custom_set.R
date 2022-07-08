@@ -2,7 +2,7 @@ source('./three-ex-function.R')
 
 xmin=-2
 xmax=2
-nx=1000
+nx=100
 x <- seq(xmin, xmax, length.out=nx)
 
 ymin=-3
@@ -12,7 +12,7 @@ y <- seq(ymin, ymax, length.out=ny)
 
 full_dimensions <- length(x) * length(y)
 
-values <- ceiling(runif(full_dimensions)*100000)
+values <- ceiling(runif(full_dimensions)*10000)
 
 z <- matrix(values, 
             nrow=length(x), 
@@ -43,3 +43,6 @@ for(row in 1:dim(z)[1]){
 rows <- rows %>% unique()
 
 plot(rows$z_value,rows$k_value)
+
+rpivotTable(rows)
+
