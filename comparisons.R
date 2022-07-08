@@ -1,8 +1,8 @@
 source('./three-ex-function.R')
 
-a <- calc(225)
+a <- calc(1446)
 
-b <- calc(1330)
+b <- calc(437446656)
 
 ####
 number_a <- a$capture_number[1]
@@ -23,7 +23,7 @@ common_steps <- common_steps_a
 uncommon_steps_b <- b[-which(b$capture_number %in% a$capture_number),]
 uncommon_steps_a <- a[-which(b$capture_number %in% a$capture_number),]
 
-commonality <- nrow(common_steps) + nrow(uncommon_steps_a) - nrow(common_steps)
+commonality <- nrow(common_steps) + nrow(uncommon_steps_a) - nrow(common_steps) +1
 
 a_trajectory <- function(){
 
@@ -33,7 +33,8 @@ title(main = 'This is a\'s full trajectory',
       sub = paste0('a: ',number_a), 
       xlab = 'Iteration', ylab = 'Magnitude')
 lines(predict(lm(a$capture_number~a$capture_iteration)))
-abline(v= commonality)
+abline(v= commonality,col='purple')
+abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')
 lines(a$capture_number,col='red')
 
 }
@@ -48,7 +49,8 @@ uncommon_a_trajectory <- function(){
   title(main = 'These are the uncommon steps that a takes', 
         sub = paste0('a: ',number_a), 
         xlab = 'Iteration', ylab = 'Magnitude')
-  abline(v=horizontal)
+  abline(v= horizontal,col='purple')
+  abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')  
   lines(uncommon_steps_a$capture_number,col='red')
   ####
   
@@ -62,7 +64,8 @@ lines(predict(lm(b$capture_number~b$capture_iteration)))
 title(main = 'This is b\'s full trajectory', 
       sub = paste0('b: ',number_b), 
       xlab = 'Iteration', ylab = 'Magnitude')
-abline(v= commonality)
+abline(v= commonality,col='purple')
+abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')
 lines(b$capture_number,col='green')
 
 
@@ -79,7 +82,8 @@ uncommon_b_trajectory <- function(){
   title(main = 'These are the uncommon steps that b takes', 
         sub = paste0('b: ',number_b), 
         xlab = 'Iteration', ylab = 'Magnitude')
-  abline(v=horizontal)
+  abline(v= horizontal,col='purple')
+  abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')  
   lines(uncommon_steps_b$capture_number,col='green')
   ####
   
@@ -93,7 +97,7 @@ lines(predict(lm(common_steps$capture_number~common_steps$capture_iteration)))
 title(main = 'These are the common steps that a and b share', 
       sub = paste0('a: ',number_a, " b: ",number_b), 
       xlab = 'Iteration', ylab = 'Magnitude')
-abline(v= min(common_steps$capture_number))
+abline(v= min(common_steps$capture_number),col='purple')
 lines(common_steps$capture_number,col='blue')
 
 
@@ -104,19 +108,20 @@ all_combined <- function(){
        ylim=c(0,max(a$capture_number,b$capture_number)),
        main="",xlab="",ylab="",col.axis='blue',
        sub="")
-  title(main = 'This is the number at which they converge', 
+  title(main = paste0('This is the number at which they converge- Iteration: ',
+                      commonality,
+                      ' Magnitude: ',uncommon_steps_a[nrow(uncommon_steps_a),'capture_number']
+                      ), 
         sub = '', 
         xlab = paste0('Iteration: ',commonality), 
         ylab = paste0('Magnitude: ',uncommon_steps_a[nrow(uncommon_steps_a),'capture_number']))
-  abline(v=commonality)
-  abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'])
+  abline(v=commonality,col='purple')
+  abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')
   points(a$capture_number)
   lines(a$capture_number, col = 'red')
   points(b$capture_number)
   lines(b$capture_number, col='green')
-  legend(x=commonality+nrow(uncommon_steps_a),y=max(a$capture_number,b$capture_number),
-         c('a','b'),
-         cex=.45,col=c("red","green"),pch=c(1,1))
+ 
   
 }
 ####

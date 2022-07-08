@@ -12,7 +12,7 @@ y <- seq(ymin, ymax, length.out=ny)
 
 full_dimensions <- length(x) * length(y)
 
-values <- ceiling(runif(full_dimensions)*10000)
+values <- ceiling(runif(full_dimensions)*100)
 
 z <- matrix(values, 
             nrow=length(x), 
