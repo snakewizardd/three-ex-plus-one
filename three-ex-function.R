@@ -5,6 +5,8 @@ source('./libraries.R')
 #It returns a nice data frame
 calc <- function(number){
   
+  original_number <- number
+  
   capture_number <- c()
   capture_iteration <- c()
   capture_state <- c()
@@ -27,13 +29,15 @@ calc <- function(number){
     
   }
   
-  output <- data.frame(capture_iteration,capture_state,capture_number)
+  output <- data.frame(original_number,capture_iteration,capture_state,capture_number) 
   
-  final_row <- data.frame(capture_iteration = nrow(output) + 1,
+  final_row <- data.frame(original_number,
+    capture_iteration = nrow(output) + 1,
                           capture_state = 'END',
-                          capture_number = 1)
+                          capture_number = 1) %>%
+    select(original_number,everything())
   
-  output_final <- rbind(output,final_row)
+  output_final <- rbind(output,final_row) 
   
   return(output_final)
   
