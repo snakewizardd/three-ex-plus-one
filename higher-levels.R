@@ -53,25 +53,28 @@ qqplot(trends$k_value,trends$n)
 
 set <- rows %>% filter(k_value %in% '214')
 
-all_combined <- function(){
-  plot(NULL,xlim=c(0,commonality+nrow(uncommon_steps_a)), 
-       ylim=c(0,max(a$capture_number,b$capture_number)),
-       main="",xlab="",ylab="",col.axis='blue',
-       sub="")
-  title(main = paste0('This is the number at which they converge- Iteration: ',
-                      commonality,
-                      ' Magnitude: ',uncommon_steps_a[nrow(uncommon_steps_a),'capture_number']
-  ), 
+
+plot(NULL,xlim=c(0,max(set$k_value)), 
+     ylim=c(0,max(set$z_value)),
+     main="",xlab="",ylab="",col.axis='blue',
+     sub="")
+title(main = paste0('The set of 214 Iterations'), 
   sub = '', 
-  xlab = paste0('Iteration: ',commonality), 
-  ylab = paste0('Magnitude: ',uncommon_steps_a[nrow(uncommon_steps_a),'capture_number']))
-  abline(v=commonality,col='purple')
-  abline(h=uncommon_steps_a[nrow(uncommon_steps_a),'capture_number'],col='purple')
-  points(a$capture_number)
-  lines(a$capture_number, col = 'red')
-  points(b$capture_number)
-  lines(b$capture_number, col='green')
+  xlab = paste0('Iteration'), 
+  ylab = paste0('Magnitude'))
   
+  
+colors <- c('red','green','blue','purple')
+
+
+for(i in 1:nrow(set)){
+  
+  
+  data <- calc(set[i,'z_value'])
+  
+  points(data$capture_number,col =colors[ceiling(runif(1)*4)])
+  lines(data$capture_number,col =colors[ceiling(runif(1)*4)])
+
   
 }
 

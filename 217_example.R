@@ -16,3 +16,4 @@ for(iteration in 2:nrow(ordered)){
 
 
 write_csv(ordered,'./new_output_files/ordered_differences_217.csv')
+write_csv(ordered %>% arrange(sep),'./new_output_files/ordered_differences_217_ordered.csv')
