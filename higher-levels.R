@@ -2,12 +2,12 @@ source('./three-ex-function.R')
 
 xmin=-2
 xmax=2
-nx=100
+nx=500
 x <- seq(xmin, xmax, length.out=nx)
 
 ymin=-3
 ymax=3
-ny=100
+ny=500
 y <- seq(ymin, ymax, length.out=ny)
 
 full_dimensions <- length(x) * length(y)
