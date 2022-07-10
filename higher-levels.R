@@ -52,6 +52,8 @@ trends <- rows %>% group_by(k_value) %>%
   count() %>%
   arrange(-n)
 
+write_csv(trends,'./new_output_files/top_trends_up_to_1_trillion.csv')
+
 pdf("./new_output_files/distribution_higher-order.pdf")
 plot(trends)
 dev.off()
@@ -93,3 +95,16 @@ for(i in 1:nrow(set)){
   
 }
 
+ordered <- set %>% arrange(-z_value) 
+
+ordered$sep <- NULL
+
+for(iteration in 2:nrow(ordered)){
+  
+  ordered[iteration,'sep'] <- ordered[iteration,'z_value'] - (ordered[iteration-1,'z_value']) 
+  ordered[iteration,'sep']  <- abs(ordered[iteration,'sep'])
+}
+
+
+write_csv(ordered,'./new_output_files/ordered_differences_258.csv')
+write_csv(ordered %>% arrange(sep),'./new_output_files/ordered_differences_258_ordered.csv')
