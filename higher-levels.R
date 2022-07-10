@@ -62,14 +62,18 @@ dev.off()
 
 
 
-set <- rows %>% filter(k_value %in% '214')
+set <- rows %>% filter(k_value %in% '258')
 
+write_csv(set,'./new_output_files/higher-order-set-258.csv')
+
+
+pdf("./new_output_files/set-258.pdf")
 
 plot(NULL,xlim=c(0,max(set$k_value)), 
      ylim=c(0,max(set$z_value)),
      main="",xlab="",ylab="",col.axis='blue',
      sub="")
-title(main = paste0('The set of 214 Iterations'), 
+title(main = paste0('The set of 258 Iterations'), 
   sub = '', 
   xlab = paste0('Iteration'), 
   ylab = paste0('Magnitude'))
@@ -81,7 +85,7 @@ colors <- c('red','green','blue','purple')
 for(i in 1:nrow(set)){
   
   
-  data <- calc(set[i,'z_value'])
+  data <- calc(as.numeric(set[i,'z_value']))
   
   points(data$capture_number,col =colors[ceiling(runif(1)*4)])
   lines(data$capture_number,col =colors[ceiling(runif(1)*4)])
