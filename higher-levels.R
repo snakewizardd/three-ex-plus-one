@@ -44,12 +44,23 @@ rows <- rows %>% unique()
 
 write_csv(rows,'./new_output_files/higher-order-numbers.csv')
 
+###
+
+rows <- read_csv('./new_output_files/higher-order-numbers.csv')
+
 trends <- rows %>% group_by(k_value) %>%
   count() %>%
   arrange(-n)
 
+pdf("./new_output_files/distribution_higher-order.pdf")
 plot(trends)
+dev.off()
+
+pdf("./new_output_files/qq-distribution_higher-pdf")
 qqplot(trends$k_value,trends$n)
+dev.off()
+
+
 
 set <- rows %>% filter(k_value %in% '214')
 
