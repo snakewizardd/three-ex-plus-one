@@ -37,9 +37,9 @@ plot_all_members <- function(k_value_input,rows){
   
 }
 
-plot_all_members_black<- function(k_value_input){
+plot_all_members_black <- function(k_value_input,rows){
   
-  set <- rows %>% filter(k_value %in% k_value_input) %>% slice(1:500)
+  set <- rows %>% filter(k_value == k_value_input)
   
   combining <- NULL
   
