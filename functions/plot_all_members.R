@@ -50,10 +50,10 @@ plot_all_members_black <- function(k_value_input,rows){
   }
   
   plot(NULL,xlim=c(0,.5*max(combining$capture_iteration)), 
-       ylim=c(0,0.05*max(combining$capture_number)),
+       ylim=c(0,0.25*max(combining$capture_number)),
        main="",xlab="",ylab="",col.axis='blue',
        sub="")
-  title(main = paste0('The set of ',max(set$k_value),' Iterations (n = 500)'), 
+  title(main = paste0('The set of ',max(set$k_value),' Iterations'), 
         sub = '', 
         xlab = paste0('Iteration'), 
         ylab = paste0('Magnitude'))
