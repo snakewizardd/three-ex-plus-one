@@ -14,11 +14,14 @@ k <- matrix(0,nrow=100,ncol=10)
 #Creating z/k index 
 index <- which(z[,] != 1)
 
+#Empty set to contain full outputs
+full_output <- NULL
+
 #Performing operations on all members of z and storing max values in k
 for(index_number in index){
   
   k[index_number] <-  max(calc(z[index_number])$capture_iteration)
-  
+  full_output <- rbind(full_output,calc(z[index_number]))
 }
 
 
@@ -42,6 +45,21 @@ rows <- rows %>% unique() %>%
 #Analyzing row-output trends
 trends <- rows %>% group_by(k_value) %>%
   count() %>% arrange(-n)
+
+#Create directory for this experiment
+Experiment_ID <- ceiling(runif(1)*100000)
+data_path <- paste0('./data_files/','experiment_',Experiment_ID)
+image_path <- paste0('./image_files/','experiment_',Experiment_ID)
+
+dir_create(data_path)
+dir_create(image_path)
+
+
+write_csv(full_output,paste0(data_path,'/full_output.csv'))
+write_csv(rows,paste0(data_path,'/z_and_k_values.csv'))
+write_csv(trends,paste0(data_path,'/trend_values.csv'))
+write_csv(as.data.frame(z),paste0(data_path,'/z_matrix.csv'))
+write_csv(as.data.frame(k),paste0(data_path,'/k_matrix.csv'))
 
 
 source('./functions/plot_all_members.R')
