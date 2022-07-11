@@ -25,5 +25,6 @@ RUN R -e "install.packages('rpivotTable', repos ='http://cran.rstudio.com/')"
 RUN R -e "install.packages('readr', repos ='http://cran.rstudio.com/')"
 RUN R -e "install.packages('tidyjson', repos ='http://cran.rstudio.com/')"
 RUN R -e "install.packages('fs', repos ='http://cran.rstudio.com/')"
+RUN R -e "install.packages('numbers', repos ='http://cran.rstudio.com/')"
 
 EXPOSE 8787
