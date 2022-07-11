@@ -1,0 +1,21 @@
+---
+title: "Insights into the Collatz Conjecture"
+author: "snakewizardd"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+github-repo: snakewizardd/three-ex-plus-one
+---
+
+# Welcome
+
+The repo: https://github.com/snakewizardd/three-ex-plus-one
+
+Data Files: https://github.com/snakewizardd/three-ex-plus-one/tree/main/data_files
+
+Image Files: https://github.com/snakewizardd/three-ex-plus-one/tree/main/image_files
+
+TBC...
