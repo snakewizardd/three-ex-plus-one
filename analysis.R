@@ -64,7 +64,7 @@ write_csv(as.data.frame(k),paste0(data_path,'/k_matrix.csv'))
 
 source('./functions/plot_all_members.R')
 
-png(paste0(image_path,"/top3.png"))
+png(paste0(image_path,"/top3.png"),width = 1000, height = 1000)
 
 par(mfrow=c(1,3))
 plot_all_members(as.numeric(trends$k_value[1]),rows)
