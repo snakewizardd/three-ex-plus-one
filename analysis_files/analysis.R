@@ -1,6 +1,8 @@
 #Sourcing the function to calculate the full permutation sets
 source('./functions/libraries.R')
 source('./functions/three-ex-function.R')
+source('./functions/plot_all_members.R')
+
 
 #Creating a random set of data
 random_set <- ceiling(runif(1000)*1000)
@@ -50,6 +52,8 @@ trends <- rows %>% group_by(k_value) %>%
 trend_ids <- rows %>% filter(k_value %in% trends$k_value[1:10])
 full_trends_data <- full_output %>% filter(original_number %in% trend_ids$z_value)
 
+###############################################
+
 #Create directory for this experiment
 Experiment_ID <- ceiling(runif(1)*100000)
 data_path <- paste0('./data_files/','experiment_',Experiment_ID)
@@ -59,6 +63,8 @@ dir_create(data_path)
 dir_create(image_path)
 
 
+###############################################
+
 write_csv(full_output,paste0(data_path,'/full_output.csv'))
 write_csv(rows,paste0(data_path,'/z_and_k_values.csv'))
 write_csv(trends,paste0(data_path,'/trend_values.csv'))
@@ -66,18 +72,8 @@ write_csv(full_trends_data,paste0(data_path,'/top_10_trend_values_full.csv'))
 write_csv(as.data.frame(z),paste0(data_path,'/z_matrix.csv'))
 write_csv(as.data.frame(k),paste0(data_path,'/k_matrix.csv'))
 
-
-source('./functions/plot_all_members.R')
-
-png(paste0(image_path,"/top3.png"),width = 1000, height = 1000)
-
-par(mfrow=c(1,3))
-plot_all_members(as.numeric(trends$k_value[1]),rows)
-plot_all_members(as.numeric(trends$k_value[2]),rows)
-plot_all_members(as.numeric(trends$k_value[3]),rows)
-
-dev.off()
-
+###############################################
+#Plots
 
 tiff(paste0(image_path,"/top3.tiff"),width = 1000, height = 1000)
 
@@ -88,6 +84,7 @@ plot_all_members(as.numeric(trends$k_value[3]),rows)
 
 dev.off()
 
+###############################################
 tiff(paste0(image_path,"/top3_zoomed_distribution.tiff"),width = 1000, height = 1000)
 
 
