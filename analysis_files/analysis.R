@@ -1,5 +1,5 @@
 #Sourcing the function to calculate the full permutation sets
-source('./libraries.R')
+source('./functions/libraries.R')
 source('./functions/three-ex-function.R')
 
 #Creating a random set of data
@@ -88,7 +88,7 @@ plot_all_members(as.numeric(trends$k_value[3]),rows)
 
 dev.off()
 
-png(paste0(image_path,"/top3_zoomed_distribution.tiff"),width = 1000, height = 1000)
+tiff(paste0(image_path,"/top3_zoomed_distribution.tiff"),width = 1000, height = 1000)
 
 
 par(mfrow=c(1,3))
