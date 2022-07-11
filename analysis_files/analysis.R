@@ -7,13 +7,13 @@ source('./functions/plot_all_members.R')
 #Creating a random set of data
 random_set <- ceiling(runif(1000)*1000)
 
-random_set <- fibonacci(50,sequence=10)
+random_set <- random_set[which(random_set %% 2>0)]
 
 #Populating a matrix with our z values
-z <- matrix(random_set,nrow=5,ncol=10)
+z <- matrix(random_set,nrow=124,ncol=4)
 
 #initializing k matrix to store results
-k <- matrix(0,nrow=5,ncol=10)
+k <- matrix(0,nrow=124,ncol=4)
 
 #Creating z/k index 
 index <- which(z[,] != 1)
@@ -58,7 +58,7 @@ full_trends_data <- full_output %>% filter(original_number %in% trend_ids$z_valu
 
 #Create directory for this experiment
 Experiment_ID <- ceiling(runif(1)*100000)
-Experiment_ID <- 'fibonacci'
+Experiment_ID <- 'random_odds'
 
 data_path <- paste0('./data_files/','experiment_',Experiment_ID)
 image_path <- paste0('./image_files/','experiment_',Experiment_ID)
