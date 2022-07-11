@@ -74,5 +74,13 @@ plot_all_members(as.numeric(trends$k_value[3]),rows)
 dev.off()
 
 
+tiff(paste0(image_path,"/top3.tiff"),width = 1000, height = 1000)
+
+par(mfrow=c(1,3))
+plot_all_members(as.numeric(trends$k_value[1]),rows)
+plot_all_members(as.numeric(trends$k_value[2]),rows)
+plot_all_members(as.numeric(trends$k_value[3]),rows)
+
+dev.off()
 
 
