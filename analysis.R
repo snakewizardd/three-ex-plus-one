@@ -64,10 +64,14 @@ write_csv(as.data.frame(k),paste0(data_path,'/k_matrix.csv'))
 
 source('./functions/plot_all_members.R')
 
+pdf(paste0(image_path,"/top3.pdf"))
+
 par(mfrow=c(1,3))
 plot_all_members(as.numeric(trends$k_value[1]),rows)
 plot_all_members(as.numeric(trends$k_value[2]),rows)
 plot_all_members(as.numeric(trends$k_value[3]),rows)
+
+dev.off()
 
 
 
