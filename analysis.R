@@ -46,6 +46,10 @@ rows <- rows %>% unique() %>%
 trends <- rows %>% group_by(k_value) %>%
   count() %>% arrange(-n)
 
+#Full data for trends
+trend_ids <- rows %>% filter(k_value %in% trends$k_value[1:10])
+full_trends_data <- full_output %>% filter(original_number %in% trend_ids$z_value)
+
 #Create directory for this experiment
 Experiment_ID <- ceiling(runif(1)*100000)
 data_path <- paste0('./data_files/','experiment_',Experiment_ID)
@@ -58,6 +62,7 @@ dir_create(image_path)
 write_csv(full_output,paste0(data_path,'/full_output.csv'))
 write_csv(rows,paste0(data_path,'/z_and_k_values.csv'))
 write_csv(trends,paste0(data_path,'/trend_values.csv'))
+write_csv(full_trends_data,paste0(data_path,'/top_10_trend_values_full.csv'))
 write_csv(as.data.frame(z),paste0(data_path,'/z_matrix.csv'))
 write_csv(as.data.frame(k),paste0(data_path,'/k_matrix.csv'))
 
