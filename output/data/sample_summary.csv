@@ -1,0 +1,4 @@
+sample_name,member_count,original_min,original_max,stopping_time_min,stopping_time_max,stopping_time_mean,stopping_time_median,stopping_time_std,peak_value_mean,peak_value_median,peak_iteration_mean
+Sample A,10000,21,999963,7,475,138.1304,131.0,57.9726563021557,10299166.3156,2508328.0,12.7476
+Sample B,100000,5,999999,5,508,137.71005,131.0,57.65801387026035,13760506.96984,2513722.0,13.01699
+Sample C,5000,1,9999,0,261,91.3396,81.0,47.18386520058582,88674.6562,24532.0,17.2678

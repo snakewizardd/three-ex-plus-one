@@ -1,0 +1,4 @@
+method,mean_partial_r,fraction_positive,fraction_significant
+baseline_original_number,0.3723887897562387,1.0,1.0
+log10_original_number,0.3732539907842073,1.0,1.0
+spearman_rank_partial,0.6935969924186977,1.0,1.0
